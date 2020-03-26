@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "antd": "^4.0.4",
     "formik": "^2.1.4",
     "prop-types": "^15.6.2",
     "react": "link:../node_modules/react",
