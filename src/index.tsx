@@ -1,3 +1,4 @@
 import WizardForm from "./WizardForm";
+import WizardStep from "./WizardStep";
 
-export { WizardForm };
+export { WizardForm, WizardStep };
