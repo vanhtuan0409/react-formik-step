@@ -7,6 +7,7 @@ const WizardFormContext = createContext<WizardFormState>({
   currentStepIndex: 0,
   gotoStep: () => {}
 });
+WizardFormContext.displayName = "WizardForm";
 
 export const useWizardContext = () => {
   return useContext(WizardFormContext);
@@ -55,12 +56,23 @@ function WizardForm<T>({
     }
   };
 
+  const validate = (values: any) => {
+    return activeStep.props.validate ? activeStep.props.validate(values) : {};
+  };
+
   return (
-    <Formik {...formikProps} onSubmit={stepSubmit}>
+    <Formik
+      {...formikProps}
+      onSubmit={stepSubmit}
+      validate={validate}
+      validationSchema={activeStep.props.validationSchema}
+    >
       {({ handleSubmit }) => (
-        <WizardFormContext.Provider value={state}>
-          <form onSubmit={handleSubmit}>{activeStep}</form>
-        </WizardFormContext.Provider>
+        <form onSubmit={handleSubmit}>
+          <WizardFormContext.Provider value={state}>
+            {activeStep}
+          </WizardFormContext.Provider>
+        </form>
       )}
     </Formik>
   );

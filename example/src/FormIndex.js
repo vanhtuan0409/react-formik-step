@@ -1,11 +1,13 @@
 import React from "react";
 import { Steps } from "antd";
+import { useWizardContext } from "react-formik-wizard";
 
-const FormIndex = ({ current, steps }) => {
+const FormIndex = () => {
+  const { currentStepIndex, steps } = useWizardContext();
   return (
-    <Steps current={current}>
+    <Steps current={currentStepIndex}>
       {steps.map((s, i) => (
-        <Steps.Step key={i} title={s} />
+        <Steps.Step key={i} title={s.title} />
       ))}
     </Steps>
   );

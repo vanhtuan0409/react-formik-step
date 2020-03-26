@@ -1,29 +1,32 @@
 import React from "react";
-import FormIndex from "./FormIndex";
 import { useWizardContext } from "react-formik-wizard";
+import { Button, Input } from "antd";
+import { Field, ErrorMessage } from "formik";
 
 export const StepOne = () => {
-  const { currentStepIndex, steps } = useWizardContext();
   return (
     <div>
-      <FormIndex current={currentStepIndex} steps={steps.map(s => s.title)} />
-      Step 1 content
-      <br />
-      <button type="submit">Next</button>
+      <Field name="firstName" as={Input} />
+      <ErrorMessage name="firstName" />
+      <Button type="primary" htmlType="submit">
+        Next
+      </Button>
     </div>
   );
 };
 
 export const StepTwo = () => {
-  const { currentStepIndex, gotoStep, steps } = useWizardContext();
+  const { currentStepIndex, gotoStep } = useWizardContext();
   return (
     <div>
-      <FormIndex current={currentStepIndex} steps={steps.map(s => s.title)} />
       Step 2 content
       <br />
-      <button type="button" onClick={() => gotoStep(currentStepIndex - 1)}>
+      <Button type="default" onClick={() => gotoStep(currentStepIndex - 1)}>
         Back
-      </button>
+      </Button>
+      <Button type="primary" htmlType="submit">
+        Submit
+      </Button>
     </div>
   );
 };
