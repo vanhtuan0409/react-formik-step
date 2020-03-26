@@ -1,23 +1,9 @@
-/**
- * @class ExampleComponent
- */
+import React from "react";
 
-import * as React from 'react'
+export type Props = { text: string };
 
-import styles from './styles.css'
+const WizardForm = ({ text }: Props) => {
+  return <div>Example Component: {text}</div>;
+};
 
-export type Props = { text: string }
-
-export default class ExampleComponent extends React.Component<Props> {
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
-}
+export default WizardForm;

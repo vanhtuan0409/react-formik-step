@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import React from "react";
+import WizardForm from "react-formik-wizard";
 
-import ExampleComponent from 'react-formik-wizard'
+const App = () => {
+  return (
+    <div>
+      <WizardForm text="hello world!!!" />
+    </div>
+  );
+};
 
-export default class App extends Component {
-  render () {
-    return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
-    )
-  }
-}
+export default App;
