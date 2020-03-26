@@ -81,7 +81,7 @@ Children of `StepForm` must only be `Step` components
 
 Example:
 
-```
+```tsx
 <StepForm
   initialValues={{
     firstName: "",
@@ -107,7 +107,7 @@ Represent a single step in multi step form
 
 Example:
 
-```
+```tsx
 <Step
   title="Step 1"
   validationSchema={Yup.object().shape({
@@ -146,7 +146,7 @@ Can only be used to child components of `StepForm`
 
 Example:
 
-```
+```tsx
 import React from "react";
 import { Steps } from "antd";
 import { useStepContext } from "react-formik-step";
@@ -169,7 +169,7 @@ export default FormIndex;
 
 ### StepState
 
-```
+```tsx
 export interface StepState {
   steps: Array<StepProps>;
   currentStepIndex: number;
