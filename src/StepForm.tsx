@@ -1,34 +1,30 @@
 import React, { createContext, useState, useContext, Children } from "react";
 import { Formik, FormikConfig, FormikHelpers } from "formik";
-import { WizardStepProps } from "./WizardStep";
+import { StepProps } from "./Step";
 
-const WizardFormContext = createContext<WizardFormState>({
+const FormContext = createContext<StepState>({
   steps: [],
   currentStepIndex: 0,
   gotoStep: () => {}
 });
-WizardFormContext.displayName = "WizardForm";
+FormContext.displayName = "StepForm";
 
-export const useWizardContext = () => {
-  return useContext(WizardFormContext);
+export const useStepContext = () => {
+  return useContext(FormContext);
 };
 
-export interface WizardFormState {
-  steps: Array<WizardStepProps>;
+export interface StepState {
+  steps: Array<StepProps>;
   currentStepIndex: number;
   gotoStep: (step: number) => void;
 }
 
-export interface WizardFormProps<T> extends FormikConfig<T> {}
+export interface StepFormProps<T> extends FormikConfig<T> {}
 
-function WizardForm<T>({
-  onSubmit,
-  children,
-  ...formikProps
-}: WizardFormProps<T>) {
+function StepForm<T>({ onSubmit, children, ...formikProps }: StepFormProps<T>) {
   const [step, setStep] = useState(0);
   const formSteps = Children.toArray(children) as Array<
-    React.ReactElement<WizardStepProps>
+    React.ReactElement<StepProps>
   >;
   const activeStep = formSteps[step];
 
@@ -39,7 +35,7 @@ function WizardForm<T>({
   };
 
   const metas = formSteps.map(s => s.props);
-  const state: WizardFormState = {
+  const state: StepState = {
     steps: metas,
     currentStepIndex: step,
     gotoStep
@@ -69,13 +65,13 @@ function WizardForm<T>({
     >
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <WizardFormContext.Provider value={state}>
+          <FormContext.Provider value={state}>
             {activeStep}
-          </WizardFormContext.Provider>
+          </FormContext.Provider>
         </form>
       )}
     </Formik>
   );
 }
 
-export default WizardForm;
+export default StepForm;

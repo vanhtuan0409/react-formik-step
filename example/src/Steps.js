@@ -1,6 +1,6 @@
 import React from "react";
-import { useWizardContext } from "react-formik-wizard";
-import { Row, Col, Button, Input, InputNumber, Typography } from "antd";
+import { useStepContext } from "react-formik-step";
+import { Row, Col, Button, Input, Typography } from "antd";
 import { Field, ErrorMessage } from "formik";
 
 export const StepOne = () => {
@@ -42,7 +42,7 @@ export const StepOne = () => {
 };
 
 export const StepTwo = () => {
-  const { currentStepIndex, gotoStep } = useWizardContext();
+  const { currentStepIndex, gotoStep } = useStepContext();
   return (
     <>
       <Row className="form-row">

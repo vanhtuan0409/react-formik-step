@@ -1,15 +1,4 @@
-import WizardForm, {
-  useWizardContext,
-  WizardFormProps,
-  WizardFormState
-} from "./WizardForm";
-import WizardStep, { WizardStepProps } from "./WizardStep";
+import StepForm, { useStepContext, StepFormProps, StepState } from "./StepForm";
+import Step, { StepProps } from "./Step";
 
-export {
-  WizardForm,
-  WizardStep,
-  useWizardContext,
-  WizardFormState,
-  WizardFormProps,
-  WizardStepProps
-};
+export { StepForm, Step, useStepContext, StepState, StepFormProps, StepProps };

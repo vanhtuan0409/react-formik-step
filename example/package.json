@@ -1,6 +1,6 @@
 {
-  "name": "react-formik-wizard-example",
-  "homepage": "https://vanhtuan0409@gmail.com.github.io/react-formik-wizard",
+  "name": "react-formik-step-example",
+  "homepage": "https://vanhtuan0409@gmail.com.github.io/react-formik-step",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
@@ -10,7 +10,7 @@
     "prop-types": "^15.6.2",
     "react": "link:../node_modules/react",
     "react-dom": "^16.8.0",
-    "react-formik-wizard": "link:..",
+    "react-formik-step": "link:..",
     "react-scripts": "^3.4.1",
     "yup": "^0.28.3"
   },

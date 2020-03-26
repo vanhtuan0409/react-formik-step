@@ -1,13 +1,15 @@
-# react-formik-wizard
+# react-formik-step
 
 >
 
-[![NPM](https://img.shields.io/npm/v/react-formik-wizard.svg)](https://www.npmjs.com/package/react-formik-wizard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-formik-step.svg)](https://www.npmjs.com/package/react-formik-step) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-formik-wizard
+npm install --save react-formik-step
+# or
+yarn add react-formik-step
 ```
 
 ## Usage
@@ -19,7 +21,7 @@ const App = () => {
   };
 
   return (
-    <WizardForm
+    <StepForm
       initialValues={{
         firstName: "",
         lastName: "",
@@ -28,7 +30,7 @@ const App = () => {
       }}
       onSubmit={onSubmit}
     >
-      <WizardStep
+      <Step
         title="step 1"
         validationSchema={Yup.object().shape({
           firstName: Yup.string()
@@ -42,8 +44,8 @@ const App = () => {
         <Layout>
           <StepOne />
         </Layout>
-      </WizardStep>
-      <WizardStep
+      </Step>
+      <Step
         title="step 2"
         validationSchema={Yup.object().shape({
           age: Yup.number()
@@ -54,8 +56,8 @@ const App = () => {
         <Layout>
           <StepTwo />
         </Layout>
-      </WizardStep>
-    </WizardForm>
+      </Step>
+    </StepForm>
   );
 };
 ```

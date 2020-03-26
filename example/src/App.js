@@ -1,5 +1,5 @@
 import React from "react";
-import { WizardForm, WizardStep } from "react-formik-wizard";
+import { StepForm, Step } from "react-formik-step";
 import * as Yup from "yup";
 import Layout from "./Layout";
 import { StepOne, StepTwo } from "./Steps";
@@ -10,7 +10,7 @@ const App = () => {
   };
 
   return (
-    <WizardForm
+    <StepForm
       initialValues={{
         firstName: "",
         lastName: "",
@@ -19,7 +19,7 @@ const App = () => {
       }}
       onSubmit={onSubmit}
     >
-      <WizardStep
+      <Step
         title="step 1"
         validationSchema={Yup.object().shape({
           firstName: Yup.string()
@@ -33,8 +33,8 @@ const App = () => {
         <Layout>
           <StepOne />
         </Layout>
-      </WizardStep>
-      <WizardStep
+      </Step>
+      <Step
         title="step 2"
         validationSchema={Yup.object().shape({
           age: Yup.number()
@@ -45,8 +45,8 @@ const App = () => {
         <Layout>
           <StepTwo />
         </Layout>
-      </WizardStep>
-    </WizardForm>
+      </Step>
+    </StepForm>
   );
 };
 
