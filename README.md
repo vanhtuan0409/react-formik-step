@@ -1,6 +1,6 @@
 # react-formik-wizard
 
-> 
+>
 
 [![NPM](https://img.shields.io/npm/v/react-formik-wizard.svg)](https://www.npmjs.com/package/react-formik-wizard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,17 +13,51 @@ npm install --save react-formik-wizard
 ## Usage
 
 ```tsx
-import * as React from 'react'
+const App = () => {
+  const onSubmit = values => {
+    console.log(values);
+  };
 
-import MyComponent from 'react-formik-wizard'
-
-class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
+  return (
+    <WizardForm
+      initialValues={{
+        firstName: "",
+        lastName: "",
+        age: 18,
+        address: ""
+      }}
+      onSubmit={onSubmit}
+    >
+      <WizardStep
+        title="step 1"
+        validationSchema={Yup.object().shape({
+          firstName: Yup.string()
+            .min(2, "At least 2 char")
+            .required("Required"),
+          lastName: Yup.string()
+            .min(2, "At least 2 char")
+            .required("Required")
+        })}
+      >
+        <Layout>
+          <StepOne />
+        </Layout>
+      </WizardStep>
+      <WizardStep
+        title="step 2"
+        validationSchema={Yup.object().shape({
+          age: Yup.number()
+            .min(16, "Must be older than 16")
+            .required("Required")
+        })}
+      >
+        <Layout>
+          <StepTwo />
+        </Layout>
+      </WizardStep>
+    </WizardForm>
+  );
+};
 ```
 
 ## License
