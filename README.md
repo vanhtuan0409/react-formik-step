@@ -99,6 +99,8 @@ Example:
 
 ```
 
+---
+
 ### Step
 
 Represent a single step in multi step form
@@ -134,11 +136,15 @@ Ref to [Formik validate](https://github.com/jaredpalmer/formik/blob/master/docs/
 
 Serve the purpose of validate fields in current step
 
+---
+
 ### useStepContext: () => StepState
 
 Custom React Hook to access StepForm state
 
 Can only be used to child components of `StepForm`
+
+---
 
 ### StepState
 
@@ -161,6 +167,8 @@ List of steps compiled from `Step`
 #### `gotoStep: (step: number) => void`
 
 Jump to the specifed `step` index. Input value will always be normalized in range `[0, steps.lenght-1]`
+
+---
 
 ## License
 
