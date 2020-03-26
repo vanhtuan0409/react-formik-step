@@ -1,6 +1,22 @@
-import React, { useState, Children } from "react";
+import React, { createContext, useState, useContext, Children } from "react";
 import { Formik, FormikConfig, FormikHelpers } from "formik";
 import { WizardStepProps } from "./WizardStep";
+
+const WizardFormContext = createContext<WizardFormState>({
+  steps: [],
+  currentStepIndex: 0,
+  gotoStep: () => {}
+});
+
+export const useWizardContext = () => {
+  return useContext(WizardFormContext);
+};
+
+export interface WizardFormState {
+  steps: Array<WizardStepProps>;
+  currentStepIndex: number;
+  gotoStep: (step: number) => void;
+}
 
 export interface WizardFormProps<T> extends FormikConfig<T> {}
 
@@ -14,13 +30,18 @@ function WizardForm<T>({
     React.ReactElement<WizardStepProps>
   >;
   const activeStep = formSteps[step];
-  const metas = formSteps.map(s => s.props.title);
-  console.log(metas);
 
   const gotoStep = (step: number) => {
     let normalized = Math.min(step, formSteps.length - 1);
     normalized = Math.max(step, 0);
     setStep(normalized);
+  };
+
+  const metas = formSteps.map(s => s.props);
+  const state: WizardFormState = {
+    steps: metas,
+    currentStepIndex: step,
+    gotoStep
   };
 
   const stepSubmit = (values: T, helpers: FormikHelpers<T>) => {
@@ -36,7 +57,11 @@ function WizardForm<T>({
 
   return (
     <Formik {...formikProps} onSubmit={stepSubmit}>
-      {({ handleSubmit }) => <form onSubmit={handleSubmit}>{activeStep}</form>}
+      {({ handleSubmit }) => (
+        <WizardFormContext.Provider value={state}>
+          <form onSubmit={handleSubmit}>{activeStep}</form>
+        </WizardFormContext.Provider>
+      )}
     </Formik>
   );
 }
