@@ -1,11 +1,15 @@
 import React from "react";
 import FormIndex from "./FormIndex";
-import { Divider } from "antd";
+import { Divider, Row, Col } from "antd";
 
 const Layout = ({ children }) => {
   return (
     <div>
-      <FormIndex />
+      <Row justify="center">
+        <Col span={12}>
+          <FormIndex />
+        </Col>
+      </Row>
       <Divider />
       {children}
     </div>

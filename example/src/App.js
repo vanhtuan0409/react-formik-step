@@ -24,14 +24,24 @@ const App = () => {
         validationSchema={Yup.object().shape({
           firstName: Yup.string()
             .min(2, "At least 2 char")
-            .required("First name is required")
+            .required("Required"),
+          lastName: Yup.string()
+            .min(2, "At least 2 char")
+            .required("Required")
         })}
       >
         <Layout>
           <StepOne />
         </Layout>
       </WizardStep>
-      <WizardStep title="step 2">
+      <WizardStep
+        title="step 2"
+        validationSchema={Yup.object().shape({
+          age: Yup.number()
+            .min(16, "Must be older than 16")
+            .required("Required")
+        })}
+      >
         <Layout>
           <StepTwo />
         </Layout>
