@@ -1,9 +1,3 @@
-import React from "react";
+import WizardForm from "./WizardForm";
 
-export type Props = { text: string };
-
-const WizardForm = ({ text }: Props) => {
-  return <div>Example Component: {text}</div>;
-};
-
-export default WizardForm;
+export { WizardForm };
