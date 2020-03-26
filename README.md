@@ -15,6 +15,12 @@ yarn add react-formik-step
 ## Usage
 
 ```tsx
+import React from "react";
+import { StepForm, Step } from "react-formik-step";
+import * as Yup from "yup";
+import Layout from "./Layout";
+import { StepOne, StepTwo } from "./Steps";
+
 const App = () => {
   const onSubmit = values => {
     console.log(values);
